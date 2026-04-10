@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clario</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-wrap">
+                <img class="logo1" src="./images/logo3.webp" alt="Clario icon">
+                <img class="logo2" src="./images/logo4.png" alt="Clario logo text">
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main class="main-content">
+            <div class="content-grid">
+
+                <!-- Left Side -->
+                <section class="text-section">
+                    <h2 class="section-title">Original Text</h2>
+                    <textarea id="originalText" class="input-box" placeholder="Paste or type your text here"></textarea>
+                    <button class="simplify-btn" onclick="simplifyText()">Simplify Text →</button>
+                </section>
+
+                <!-- Right Side -->
+                <section class="text-section">
+                    <h2 class="section-title">Simplified Text</h2>
+                    <div id="simplifiedText" class="output-box">Your simplified text will appear here</div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Simplifying text for better readability and inclusive learning experience.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <p>Simplifier text for dyslexia</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Simplifier.text@gmail.com</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
+    
+<script src="script.js"></script>
+</body>
+</html>
