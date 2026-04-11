@@ -20,7 +20,19 @@ async function simplifyText() {
             })
         });
 
-        const data = await response.json();
+        console.log("STATUS:", response.status);
+
+        const raw = await response.text();
+        console.log("RAW RESPONSE:", raw);
+
+        let data;
+        try {
+            data = JSON.parse(raw);
+        } catch (e) {
+            document.getElementById("simplifiedText").innerText = "Backend response bukan JSON valid.";
+            return;
+        }
+
         console.log("API RESPONSE:", data);
 
         if (response.ok) {
@@ -35,13 +47,14 @@ async function simplifyText() {
             const highlighted = highlightChanges(originalText, simplifiedText);
             document.getElementById("simplifiedText").innerHTML = highlighted;
         } else {
-            console.log("Backend error:", data);
-            alert("Failed to simplify text: " + JSON.stringify(data));
+            document.getElementById("simplifiedText").innerText =
+                "Failed: " + JSON.stringify(data);
         }
 
     } catch (error) {
         console.error("Server error:", error);
-        alert("Server error.");
+        document.getElementById("simplifiedText").innerText =
+            "Server error: " + error.message;
     }
 }
 
