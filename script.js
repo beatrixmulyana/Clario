@@ -9,7 +9,7 @@ async function simplifyText() {
     document.getElementById("simplifiedText").innerHTML = "⏳ Simplifying...";
 
     try {
-        const response = await fetch("https://clario.kesug.com/clario-backend/simplify.php", {
+        const response = await fetch("http://127.0.0.1:8000/api/simplify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -20,19 +20,7 @@ async function simplifyText() {
             })
         });
 
-        console.log("STATUS:", response.status);
-
-        const raw = await response.text();
-        console.log("RAW RESPONSE:", raw);
-
-        let data;
-        try {
-            data = JSON.parse(raw);
-        } catch (e) {
-            document.getElementById("simplifiedText").innerText = "Backend response bukan JSON valid.";
-            return;
-        }
-
+        const data = await response.json();
         console.log("API RESPONSE:", data);
 
         if (response.ok) {
@@ -47,14 +35,13 @@ async function simplifyText() {
             const highlighted = highlightChanges(originalText, simplifiedText);
             document.getElementById("simplifiedText").innerHTML = highlighted;
         } else {
-            document.getElementById("simplifiedText").innerText =
-                "Failed: " + JSON.stringify(data);
+            console.log("Backend error:", data);
+            alert("Failed to simplify text: " + JSON.stringify(data));
         }
 
     } catch (error) {
         console.error("Server error:", error);
-        document.getElementById("simplifiedText").innerText =
-            "Server error: " + error.message;
+        alert("Server error.");
     }
 }
 
