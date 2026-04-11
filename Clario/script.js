@@ -9,7 +9,7 @@ async function simplifyText() {
     document.getElementById("simplifiedText").innerHTML = "⏳ Simplifying...";
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/simplify", {
+        const response = await fetch("https://clario.kesug.com/clario-backend/simplify.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
